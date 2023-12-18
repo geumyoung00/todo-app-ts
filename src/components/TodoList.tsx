@@ -1,12 +1,14 @@
 import TodoItem from './TodoItem';
 
-const TodoList: React.FC<{ items: string[] }> = props => {
+const TodoList: React.FC<{
+	items: string[];
+	onRemove: (selectedItem: string) => void;
+}> = props => {
 	return (
 		<ul>
 			{props.items.map(item => (
-				<TodoItem text={item} key={item} />
+				<TodoItem text={item} key={item} onRemove={props.onRemove} />
 			))}
-			{/* <TodoItem items={props.items} /> */}
 		</ul>
 	);
 };

@@ -14,6 +14,7 @@ function App() {
 	const removeTodo = (selectedItem: string) => {
 		const newTodo = todoList.filter(item => item !== selectedItem);
 		console.log('filter된 배열반환___', newTodo);
+		setTodoList(newTodo);
 	};
 
 	return (

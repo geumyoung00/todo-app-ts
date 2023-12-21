@@ -1,20 +1,21 @@
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
 
 const NewTodo: React.FC<{ onAdd: (text: string) => void }> = props => {
-	const inputRef = useRef<HTMLInputElement>(null);
+	const [inputText, setInputText] = useState<string>('');
+	const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setInputText(e.target.value);
+	};
+
 	const submitHandler = (e: React.FormEvent) => {
 		e.preventDefault();
-		const text = inputRef.current!.value;
 
-		if (text.trim().length === 0) {
-			return;
-		}
-		props.onAdd(text);
+		props.onAdd(inputText);
+		setInputText('');
 	};
 
 	return (
 		<form onSubmit={submitHandler}>
-			<input type='text' ref={inputRef} />
+			<input type='text' value={inputText} onChange={changeHandler} />
 			<button>추가</button>
 		</form>
 	);

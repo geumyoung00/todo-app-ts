@@ -1,4 +1,4 @@
-export class todo {
+export class Todo {
 	id: string;
 	text: string;
 

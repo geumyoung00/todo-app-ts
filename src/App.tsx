@@ -1,18 +1,18 @@
 import { useState } from 'react';
-import './App.css';
-import { todo } from './types/todo';
 import NewTodo from './components/TodoInput';
 import TodoList from './components/TodoList';
+import { Todo } from './types/todo';
 
 function App() {
-	const [todoList, setTodoList] = useState<todo[]>([]);
+	const [todoList, setTodoList] = useState<Todo[]>([]);
 	const addTodo = (text: string) => {
-		setTodoList(prevList => [...prevList, text]);
+		setTodoList(prevList => [...prevList, new Todo(text)]);
+		console.log('Todo__', todoList);
 	};
 
 	const removeTodo = (selectedItem: string) => {
-		// const newTodo = todoList.filter(item => item !== selectedItem);
-		// setTodoList(newTodo);
+		const resultList = todoList.filter(item => item.id !== selectedItem);
+		setTodoList(resultList);
 	};
 
 	return (

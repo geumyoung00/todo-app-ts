@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import TodoContext from '../store/todo-context';
 
 interface TodoInputInterface {
 	addTodo: (text: string) => void;
 }
 
 const NewTodo = ({ addTodo }: TodoInputInterface) => {
+	const todoCtx = useContext(TodoContext);
+
 	const [inputText, setInputText] = useState<string>('');
 	const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setInputText(e.target.value);
@@ -13,7 +16,7 @@ const NewTodo = ({ addTodo }: TodoInputInterface) => {
 	const submitHandler = (e: React.FormEvent) => {
 		e.preventDefault();
 
-		addTodo(inputText);
+		todoCtx.addTodo(inputText);
 		setInputText('');
 	};
 

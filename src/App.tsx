@@ -7,7 +7,6 @@ function App() {
 	const [todoList, setTodoList] = useState<Todo[]>([]);
 	const addTodo = (text: string) => {
 		setTodoList(prevList => [...prevList, new Todo(text)]);
-		console.log('Todo__', todoList);
 	};
 
 	const removeTodo = (selectedItem: string) => {
@@ -17,9 +16,9 @@ function App() {
 
 	return (
 		<div className='App'>
-			<NewTodo onAdd={addTodo} />
+			<NewTodo addTodo={addTodo} />
 			<h1>해야 할 일</h1>
-			<TodoList items={todoList} onRemove={removeTodo} />
+			<TodoList Todos={todoList} removeTodo={removeTodo} />
 		</div>
 	);
 }

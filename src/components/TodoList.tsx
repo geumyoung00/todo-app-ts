@@ -1,14 +1,14 @@
 import { Todo } from '../types/todo';
 import TodoItem from './TodoItem';
 interface TodoListInterface {
-	Todos: Todo[];
+	todos: Todo[];
 	removeTodo: (id: string) => void;
 }
 
-const TodoList = ({ Todos, removeTodo }: TodoListInterface) => {
+const TodoList = ({ todos, removeTodo }: TodoListInterface) => {
 	return (
 		<ul>
-			{Todos.map(item => (
+			{todos.map(item => (
 				<TodoItem
 					text={item.text}
 					key={item.id}

@@ -18,7 +18,7 @@ function App() {
 		<div className='App'>
 			<NewTodo addTodo={addTodo} />
 			<h1>해야 할 일</h1>
-			<TodoList Todos={todoList} removeTodo={removeTodo} />
+			<TodoList todos={todoList} removeTodo={removeTodo} />
 		</div>
 	);
 }

@@ -1,6 +1,6 @@
-import todoContext from './todo-context';
 import React, { useState } from 'react';
 import { Todo } from '../types/todo';
+import { TodoContext } from './todo-context';
 
 export const TodoProvider = ({ children }: any) => {
 	const [todoList, setTodoList] = useState<Todo[]>([]);
@@ -13,13 +13,13 @@ export const TodoProvider = ({ children }: any) => {
 		setTodoList(resultList);
 	};
 
-	const todoPovider = {
+	const todoValue = {
 		todos: todoList,
 		addTodo: addTodo,
 		removeTodo: removeTodo,
 	};
 
 	return (
-		<todoContext.Provider value={todoPovider}>{children}</todoContext.Provider>
+		<TodoContext.Provider value={todoValue}>{children}</TodoContext.Provider>
 	);
 };

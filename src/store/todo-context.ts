@@ -1,9 +1,8 @@
 import { createContext } from 'react';
+import todoContextType from '../types/todoContextType';
 
-const TodoContext = createContext({
+export const TodoContext = createContext<todoContextType>({
 	todos: [],
 	addTodo: (text: string) => {},
 	removeTodo: (id: string) => {},
 });
-
-export default TodoContext;

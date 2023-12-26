@@ -1,11 +1,11 @@
 import React, { useContext, useState } from 'react';
-import TodoContext from '../store/todo-context';
+import { TodoContext } from '../store/todo-context';
 
-interface TodoInputInterface {
-	addTodo: (text: string) => void;
-}
+// interface TodoInputInterface {
+// 	addTodo: (text: string) => void;
+// }
 
-const NewTodo = ({ addTodo }: TodoInputInterface) => {
+const NewTodo = () => {
 	const todoCtx = useContext(TodoContext);
 
 	const [inputText, setInputText] = useState<string>('');

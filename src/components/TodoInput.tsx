@@ -1,20 +1,28 @@
-import React, { useRef } from 'react';
+import React, { useContext, useState } from 'react';
+import { TodoContext } from '../store/todo-context';
 
-const NewTodo: React.FC<{ onAdd: (text: string) => void }> = props => {
-	const inputRef = useRef<HTMLInputElement>(null);
+// interface TodoInputInterface {
+// 	addTodo: (text: string) => void;
+// }
+
+const NewTodo = () => {
+	const todoCtx = useContext(TodoContext);
+
+	const [inputText, setInputText] = useState<string>('');
+	const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setInputText(e.target.value);
+	};
+
 	const submitHandler = (e: React.FormEvent) => {
 		e.preventDefault();
-		const text = inputRef.current!.value;
 
-		if (text.trim().length === 0) {
-			return;
-		}
-		props.onAdd(text);
+		todoCtx.addTodo(inputText);
+		setInputText('');
 	};
 
 	return (
 		<form onSubmit={submitHandler}>
-			<input type='text' ref={inputRef} />
+			<input type='text' value={inputText} onChange={changeHandler} />
 			<button>추가</button>
 		</form>
 	);

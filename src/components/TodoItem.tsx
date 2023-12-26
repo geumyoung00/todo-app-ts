@@ -1,18 +1,9 @@
-import { useRef } from 'react';
-
-const TodoItem: React.FC<{
+interface TodoItemInterface {
 	text: string;
-	onRemove: (selectedItem: string) => void;
-}> = props => {
-	const selectedRef = useRef<HTMLLIElement>(null);
-	const findItem = () => {
-		const selectedItem = selectedRef.current!.innerText;
-		props.onRemove(selectedItem);
-	};
-	return (
-		<li onClick={findItem} ref={selectedRef}>
-			{props.text}
-		</li>
-	);
+	removeTodo: () => void;
+}
+
+const TodoItem = ({ text, removeTodo }: TodoItemInterface) => {
+	return <li onClick={removeTodo}>{text}</li>;
 };
 export default TodoItem;
